@@ -76,7 +76,7 @@ $(
       beforeEach(done => {
         loadFeed(0, () => {
           feed1 = document.querySelector('.feed').innerHTML;
-          loadFeed(1, done => {
+          loadFeed(1, () => {
             feed2 = document.querySelector('.feed').innerHTML;
             done();
           });
