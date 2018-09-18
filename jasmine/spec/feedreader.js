@@ -37,7 +37,7 @@ $(
         expect(body.classList.contains('menu-hidden')).toBe(true);
       });
 
-      // test to make sure the menu hides/reveals when the menu iocn is clicked.
+      // test to make sure the menu hides/reveals when the menu icon is clicked.
       it('menu change visibility on click', () => {
         const body = document.querySelector('body');
         const menuIcon = document.querySelector('.menu-icon-link');
@@ -69,7 +69,7 @@ $(
 
     // start new feed selection test suite
     describe('New Feed Selection', () => {
-      // test to make sure when a new feed is loaded when loadfeed is called and the content is actually updated.
+      // test to make sure when a new feed is loaded when the content is actually updated.
       let feed1;
       let feed2;
 
