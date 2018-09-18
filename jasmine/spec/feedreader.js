@@ -70,29 +70,21 @@ $(
     // start new feed selection test suite
     describe('New Feed Selection', () => {
       // test to make sure when a new feed is loaded when loadfeed is called and the content is actually updated.
-      const feed = document.querySelector('.feed');
-      // beforeEach(done => {
-      //   loadFeed(0, () => {
-      //     feed1 = document.querySelector('.feed').innerHTML;
-      //   });
-      //   loadFeed(1, () => {
-      //     feed2 = document.querySelector('.feed').innerHTML;
-      //     done();
-      //   });
-      // });
+      let feed1;
+      let feed2;
 
       beforeEach(done => {
-        loadFeed(0);
-        console.log(feed.children[0].innerText);
-        loadFeed(1, done);
+        loadFeed(0, () => {
+          feed1 = document.querySelector('.feed').innerHTML;
+          loadFeed(1, done => {
+            feed2 = document.querySelector('.feed').innerHTML;
+            done();
+          });
+        });
       });
       it('content changes', () => {
-        console.log(feed.children[0].innerText);
+        expect(feed1).not.toBe(feed2);
       });
-      // it('content changes', done => {
-      //   expect(feed1).not.toBe(feed2);
-      //   done();
-      // });
     });
   })()
 );
