@@ -11,7 +11,7 @@ This is a basic web-based RSS feed reader application.
 4. Scroll to the end of the page to see the results.
 5. To view the test suite, open jasmine/spec/feedreader.js with your favorite text editor.
 
-# Tests Implemented
+## Tests Implemented
 - **RSS Feeds** test suite that includes:
   - a test to make sure the allfeeds variable has been defined and is not empty
   - a test that loops through each feed and makes sure the url is defined and not empty
