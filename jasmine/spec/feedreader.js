@@ -54,33 +54,45 @@ $(
 
     describe('Initial Entries', () => {
       // test that makes sure the loadFeed function is working properly. make sure it is called and completes its task and that there is at least one entry in the feed.
+      let feedLength;
       beforeEach(done => {
-        loadFeed(0, done);
+        loadFeed(0, () => {
+          feedLength = document.querySelectorAll('.feed .entry').length;
+          done();
+        });
       });
-      it('completes work', () => {
-        const feed = document.querySelector('.feed > .entry');
-        expect(feed.children.length > 0).toBe(true);
+      it('does not have zero entries', done => {
+        expect(feedLength).toBeGreaterThan(0);
+        done();
       });
     });
 
     // start new feed selection test suite
     describe('New Feed Selection', () => {
-      // test to make sure when a new feed is loaded the content is actually updated.
-      let feed1;
-      let feed2;
+      // test to make sure when a new feed is loaded when loadfeed is called and the content is actually updated.
+      const feed = document.querySelector('.feed');
+      // beforeEach(done => {
+      //   loadFeed(0, () => {
+      //     feed1 = document.querySelector('.feed').innerHTML;
+      //   });
+      //   loadFeed(1, () => {
+      //     feed2 = document.querySelector('.feed').innerHTML;
+      //     done();
+      //   });
+      // });
+
       beforeEach(done => {
-        loadFeed(0, () => {
-          feed1 = document.querySelector('.feed').innerHTML;
-        });
-        loadFeed(1, () => {
-          feed2 = document.querySelector('.feed').innerHTML;
-          done();
-        });
+        loadFeed(0);
+        console.log(feed.children[0].innerText);
+        loadFeed(1, done);
       });
-      it('content changes', done => {
-        expect(feed1).not.toBe(feed2);
-        done();
+      it('content changes', () => {
+        console.log(feed.children[0].innerText);
       });
+      // it('content changes', done => {
+      //   expect(feed1).not.toBe(feed2);
+      //   done();
+      // });
     });
   })()
 );
